@@ -1,10 +1,10 @@
-import { Router, Request, Response } from 'express';
+import { Router, Request, Response, response } from 'express';
 import * as jose from 'jose';
+import { authorizationMiddleware } from '../middlewares/authorization.middleware';
+import { userInfo } from '../controllers/user.controller';
 
 const router = Router();
 
-router.get("/user", (request: Request, response: Response) => {
-    response.json("Hello");
-});
+router.get("/user", authorizationMiddleware, userInfo);
 
 export default router;
