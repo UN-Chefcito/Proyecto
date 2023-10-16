@@ -6,11 +6,10 @@ For now, we have made some dynamic wireframes [here](https://chefcito-personaliz
 
 And our canvas model and mockups prototypes are in this repo, on /prototype
 
-
 ## Getting started
 
 ### API
 
-* See [UN-CHEFCITO API - README](./chefcito-back/API_README.md)
+* See [UN-CHEFCITO API - README](./chefcito-back/README.md)
 
 ### Mobile App
