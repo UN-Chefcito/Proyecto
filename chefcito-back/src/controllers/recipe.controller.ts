@@ -41,6 +41,35 @@ export const getRecipes = async (_: Request, res: Response): Promise<Response> =
     }
   };
 
+  export const getRecipesByCost = async (req: Request, res: Response) => {
+    try {
+      const { costType, cost } = req.query;
+  
+      if (!costType || !cost) {
+        return res.status(400).json({ message: 'Missing parameters: costType and cost are required.' });
+      }
+  
+      // Convierte el costo de la cadena a un número
+      const costValue = parseFloat(cost as string);
+  
+      // Obtiene todas las recetas que tienen el mismo tipo de costo y un costo en el rango especificado
+      const recipes = await prisma.recipe.findMany({
+        where: {
+          cost_type: costType as string,
+          cost: {
+            gte: costValue * 0.8,  // 80% del costo suministrado
+            lte: costValue * 1.2,  // 120% del costo suministrado
+          },
+        },
+      });
+  
+      return res.status(200).json(recipes);
+    } catch (error) {
+      console.error('Error fetching recipes by cost:', error);
+      return res.status(500).json({ message: 'Internal Server Error' });
+    }
+  };
+
   export const getRecipeById = async (req: Request, res: Response): Promise<Response> => {
     const recipeId = parseInt(req.params.id);
   
