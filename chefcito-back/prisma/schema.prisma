@@ -11,19 +11,20 @@ datasource db {
 }
 
 model User {
-  user_id     Int       @id @default(autoincrement())
-  name        String    @db.VarChar(200)
-  email       String    @unique @db.VarChar(255)
-  password    String    @db.VarChar()
+  user_id  Int    @id @default(autoincrement())
+  name     String @db.VarChar(200)
+  email    String @unique @db.VarChar(255)
+  password String @db.VarChar()
 }
 
 model Recipe {
-  recipe_id   Int       @id @default(autoincrement())
+  recipe_id   Int    @id @default(autoincrement())
   title       String
   description String
   ingredients String
   steps       String
-  cost_type   String
-  cost        Float
+  calories    Float
+  protein     Float
+  buks        Float
   keywords    String
 }

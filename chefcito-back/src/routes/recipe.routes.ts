@@ -7,6 +7,7 @@ import {
   getRecipeById,
   getRecipesByKeywords,
   getRecipesByCost,
+  uploadRecipe
 } from "../controllers/recipe.controller";
 import validationMiddleware from "../middlewares/validation.middleware";
 import { recipeSchema } from "../schemas/recipe.schema";
@@ -25,5 +26,6 @@ router.get("/recipes/:id", getRecipeById);
 router.get("/recipes/keywords/:keywords", getRecipesByKeywords); 
 router.put("/recipes/:id", updateRecipe);
 router.delete("/recipes/:id", deleteRecipe);
+router.get("/upload/recipes", uploadRecipe);
 
 export default router;
